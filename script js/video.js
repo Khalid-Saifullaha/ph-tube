@@ -1,5 +1,13 @@
-// 1. fetch, Load and Show Categories on html
 
+function getTime(time){
+    // get hour and rest second
+    const hour = parseInt(time / 3600);
+    let remainingSecond = time % 3600;
+    const minute = parseInt(remainingSecond / 60);
+     remainingSecond= remainingSecond % 60;
+    return `${hour} hour ${minute} minute ${remainingSecond} second ago`;
+}
+// 1. fetch, Load and Show Categories on html
 // create loadCatagories
 
 const loadCatagories = () => {
@@ -48,7 +56,7 @@ const displayVideos = (videos) =>{
       class="h-full w-full object-cover"
       alt="" />
       ${
-        video.others.posted_date?.length == 0? "" : `<span class = "absolute right-2 bottom-2 bg-black rounded p-1 text-white">${video.others.posted_date}</span>`
+        video.others.posted_date?.length == 0? "" : `<span class = "absolute text-xs right-2 bottom-2 bg-black rounded p-1 text-white">${getTime(video.others.posted_date)}</span>`
       }
 
   </figure>
